@@ -5,6 +5,11 @@
       "rootDir": "./src",
       "outDir": "./build",
       "esModuleInterop": true,
-      "strict": true
+      "moduleResolution": "node",
+      "noImplicitReturns": false,
+      "strict": true,
+      "emitDecoratorMetadata": true,
+      "strictPropertyInitialization": false,
+      "experimentalDecorators": true
     }
-  }
+}
