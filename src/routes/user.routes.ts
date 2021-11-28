@@ -1,10 +1,14 @@
 import { Router } from 'express';
 import UserController from '../resources/user/user.controllers';
+import userAuthenticated from '../middlewares/userAuthenticated'; 
 
-const useRouter = Router();
+
+
+const userRouter = Router();
 const userController = new UserController();
 
-useRouter.post('/signin', userController.signin)
-useRouter.post('/signup', userController.signup)
+userRouter.post('/signin', userController.signin)
+userRouter.post('/signup', userController.signup)
+userRouter.get('/me', userAuthenticated, userController.me)
 
-export default useRouter;
+export default userRouter;

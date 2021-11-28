@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import useRouter from './user.routes';
+
+import userRouter from './user.routes';
+import pixRouter from './pix.routes';
 
 
 const routes = Router();
 
-routes.use('/user', useRouter);
+routes.use('/user', userRouter);
+routes.use('/pix', pixRouter);
 
 export default routes;

@@ -5,12 +5,14 @@ import authConfig from '../config/auth';
 import AppError from '../shared/error/AppError';
 
 interface ITokenPlayload {
+    firstName: string;
+    lastName: string;
     iat: number;
     exp: number;
     sub: string;
 }
 
-export default function ensureAuthenticated(
+export default function userAuthenticated(
     req: Request,
     res: Response,
     next: NextFunction,
@@ -28,10 +30,12 @@ export default function ensureAuthenticated(
     try {
         const decoded = verify(token, authConfig.jwt.secret);
 
-        const { sub } = decoded as ITokenPlayload;
+        const { sub, firstName, lastName } = decoded as ITokenPlayload;
 
         req.user = {
             id: sub,
+            firstName,
+            lastName
         };
 
         return next();
