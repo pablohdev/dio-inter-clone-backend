@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+ db:
+    container_name: dio
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: dio-inter
+      POSTGRES_DB: inter
